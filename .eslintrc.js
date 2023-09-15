@@ -24,5 +24,6 @@ module.exports = {
   rules: {
     "no-console": "off",
     quotes: "off",
+    "import/no-extraneous-dependencies": "off",
   },
 };
