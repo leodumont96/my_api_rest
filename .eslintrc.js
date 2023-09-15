@@ -22,9 +22,10 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    "no-console": "off",
-    quotes: "off",
-    "import/no-extraneous-dependencies": "off",
-    "class-methods-use-this": "off",
+    'no-console': 'off',
+    quotes: 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'class-methods-use-this': 'off',
+    'import/first': 'off',
   },
 };
