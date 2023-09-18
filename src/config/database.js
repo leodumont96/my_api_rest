@@ -1,4 +1,4 @@
-const { config } = require('dotenv');
+// const { config } = require('dotenv');
 
 require('dotenv').config();
 
@@ -42,5 +42,3 @@ module.exports = {
     timeZone: 'America/Sao_Paulo',
   },
 };
-
-module.exports = config;
