@@ -46,7 +46,7 @@ class TokenController {
     );
 
     // retorna um objeto com o token gerado :)
-    res.json({ token });
+    return res.json({ token });
   }
 }
 
