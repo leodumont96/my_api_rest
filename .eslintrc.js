@@ -23,9 +23,9 @@ module.exports = {
   },
   rules: {
     'no-console': 'off',
-    quotes: 'off',
     'import/no-extraneous-dependencies': 'off',
     'class-methods-use-this': 'off',
     'import/first': 'off',
+    'no-param-reassign': 'off',
   },
 };
