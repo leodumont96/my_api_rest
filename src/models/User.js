@@ -54,4 +54,10 @@ export default class User extends Model {
     });
     return this;
   }
+
+  // aqui vamos validar a senha digitada pelo usuário
+  passwordIsValid(password) {
+    // usamos o bcryptjs que já está importado para comparar
+    return bcryptjs.compare(password, this.password_hash);
+  }
 }
