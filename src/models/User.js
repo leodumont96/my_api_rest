@@ -45,7 +45,12 @@ export default class User extends Model {
     });
 
     this.addHook('beforeSave', async (user) => {
-      user.password_hash = await bcryptjs.hash(user.password, 8);
+      // vamos checar se foi informado a senha para fazer fazer o hash
+      // pois se não houver não é necessário, no caso do PUT/Update
+      // se quisermos alterar apenas o nome do usuário por exemplo
+      if (user.password) {
+        user.password_hash = await bcryptjs.hash(user.password, 8);
+      }
     });
     return this;
   }
