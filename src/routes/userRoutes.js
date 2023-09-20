@@ -5,12 +5,14 @@ import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
+// Não deveriam existir num sistema real
+// router.get('/', userController.index);
+// router.get('/:id', userController.show);
+
 router.post('/', userController.store);
-router.get('/', loginRequired, userController.index);
-// recebe o parametro :id para acessar exatamente o usuário
-router.get('/:id', userController.show);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.delete);
+// ambos seguintes por segurança devemos deixar o acesso restrito
+router.put('/', loginRequired, userController.update);
+router.delete('/:', loginRequired, userController.delete);
 
 export default router;
 
