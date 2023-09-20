@@ -122,7 +122,9 @@ class UserController {
       // por fim apagamos, usando o método destroy
       await user.destroy();
       // optei por colocar essa mensagem ao concluir
-      return res.json('Usuário apagado');
+      return res.json({
+        apagado: true,
+      });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),

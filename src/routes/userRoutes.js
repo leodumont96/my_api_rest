@@ -12,7 +12,7 @@ router.get('/', userController.index);
 router.post('/', userController.store);
 // ambos seguintes por segurança devemos deixar o acesso restrito
 router.put('/', loginRequired, userController.update);
-router.delete('/:', loginRequired, userController.delete);
+router.delete('/', loginRequired, userController.delete);
 
 export default router;
 
