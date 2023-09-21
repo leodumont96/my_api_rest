@@ -1,10 +1,12 @@
 import multer from 'multer';
 import multerConfig from '../config/multer';
 
+import Foto from '../models/Foto';
+
 // atribuo a constante upload a função multer para receber o upload
 // passo como argumento as configurações dele
 // e uso o método single pra dizer que vai receber um único arquivo
-// do 'fiqldName' campo de nome 'foto' na requisição
+// do 'fieldName' campo de nome 'foto' na requisição
 const upload = multer(multerConfig).single('foto');
 
 class FotoController {
@@ -23,8 +25,12 @@ class FotoController {
           errors: [error.code],
         });
       }
-      // não havendo erro, retornamos que deu tudo certo
-      return res.json(req.file);
+      // precisamos desses campos que foram enviados na requisição ao enviar o arquivo
+      const { originalname, filename } = req.file;
+      // criamos a foto
+      const foto = Foto.create({ originalname, filename });
+      // e retornamos
+      return res.json(foto);
     });
   }
 }
