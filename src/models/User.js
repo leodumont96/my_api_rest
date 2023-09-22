@@ -45,9 +45,6 @@ export default class User extends Model {
     });
 
     this.addHook('beforeSave', async (user) => {
-      // vamos checar se foi informado a senha para fazer fazer o hash
-      // pois se não houver não é necessário, no caso do PUT/Update
-      // se quisermos alterar apenas o nome do usuário por exemplo
       if (user.password) {
         user.password_hash = await bcryptjs.hash(user.password, 8);
       }
@@ -55,9 +52,7 @@ export default class User extends Model {
     return this;
   }
 
-  // aqui vamos validar a senha digitada pelo usuário
   passwordIsValid(password) {
-    // usamos o bcryptjs que já está importado para comparar
     return bcryptjs.compare(password, this.password_hash);
   }
 }

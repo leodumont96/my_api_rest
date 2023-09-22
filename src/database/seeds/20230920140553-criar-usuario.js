@@ -9,7 +9,6 @@ module.exports = {
         {
           nome: 'Benedito',
           email: 'benedito@email.com',
-          // vamos criptografar a senha com o bcrypt como já vimos
           password_hash: await bcryptjs.hash('123456', 8),
           created_at: new Date(),
           updated_at: new Date(),
@@ -17,7 +16,6 @@ module.exports = {
         {
           nome: 'Benedito 2',
           email: 'benedito2@email.com',
-          // vamos criptografar a senha com o bcrypt como já vimos
           password_hash: await bcryptjs.hash('654321', 8),
           created_at: new Date(),
           updated_at: new Date(),
@@ -25,7 +23,6 @@ module.exports = {
         {
           nome: 'Benedito 3',
           email: 'benedito3@email.com',
-          // vamos criptografar a senha com o bcrypt como já vimos
           password_hash: await bcryptjs.hash('987654321', 8),
           created_at: new Date(),
           updated_at: new Date(),

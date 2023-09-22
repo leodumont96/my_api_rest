@@ -1,16 +1,13 @@
 import { Router } from 'express';
 import userController from '../controllers/UserController';
-// importamos o middleware e passamos na rota que precisarmos
 import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-// Não deveriam existir num sistema real
 router.get('/', userController.index);
 // router.get('/:id', userController.show);
 
 router.post('/', loginRequired, userController.store);
-// ambos seguintes por segurança devemos deixar o acesso restrito
 router.put('/', loginRequired, userController.update);
 router.delete('/:id', loginRequired, userController.delete);
 

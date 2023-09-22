@@ -23,8 +23,6 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
-    // aqui definimos o caminho para arquivos estáticos da nossa api
-    // importamos o resolve para isso e definimos a pasta upload
     this.app.use(express.static(resolve(__dirname, 'uploads')));
   }
 

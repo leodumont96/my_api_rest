@@ -1,19 +1,13 @@
 import Aluno from '../models/Aluno';
-// queremos exibir as fotos junto com os alunos, logo precisamos importá-las aqui
 import Foto from '../models/Foto';
 
 class AlunoController {
   async index(req, res) {
     const alunos = await Aluno.findAll({
-      // aqui vou passar os atributos que quero selecionar
       attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
-      // aqui vou definir a ordem dos resultados exibidos, queremos pelo id, em ordem decrescente
-      // e tambpem queremos listar as fotos em ordem decrescente
       order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
-      // incluimos a foto ao aluno para ser exibida
       include: {
         model: Foto,
-        // e dizemos para trazer o campo filename mas também a url da foto carregada
         attributes: ['url', 'filename'],
       },
     });
@@ -41,9 +35,7 @@ class AlunoController {
           errors: ['Necessário informar o ID'],
         });
       }
-      // aqui também queremos o mesmo comportamento do index, definir os atributos
-      // que seram exibidos, a ordem deles, incluir as fotos respectivas do aluno
-      // e exibir apenas o campo que queremos para identificar + a url para acessar
+
       const aluno = await Aluno.findByPk(id, {
         attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
         order: [['id', 'DESC'], [Foto, 'id', 'DESC']],

@@ -16,22 +16,13 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      // vamos criar a relação entre as tabelas FK
-      // vai receber o id do aluno da tabela alunos
       aluno_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-          // tabela
           model: 'alunos',
-          // chave primária
           key: 'id',
         },
-        // seja deletando ou atualizando
-        // CASCADE - ações feitas na tabela de referencia são refletidas aqui
-        // SET NULL - coloca esse campo como nulo
-        // RESTRICT - não vai permitir
-        // NO ACTION - sem ações
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       },
