@@ -25,15 +25,22 @@ class FotoController {
           errors: [error.code],
         });
       }
-      // precisamos desses campos que foram enviados na requisição ao enviar o arquivo
-      const { originalname, filename } = req.file;
-      // vamos enviar na requisição o aluno_id para identificar qual usuário será a foto
-      // então precisamos desse dado, lembrando que só podemos enviar para um aluno existente
-      const { aluno_id } = req.body;
-      // criamos a foto no banco de dados e enviamos os campos capturados
-      const foto = await Foto.create({ originalname, filename, aluno_id });
-      // e retornamos
-      return res.json(foto);
+
+      try {
+        // precisamos desses campos que foram enviados na requisição ao enviar o arquivo
+        const { originalname, filename } = req.file;
+        // vamos enviar na requisição o aluno_id para identificar qual usuário será a foto
+        // então precisamos desse dado, lembrando que só podemos enviar para um aluno existente
+        const { aluno_id } = req.body;
+        // criamos a foto no banco de dados e enviamos os campos capturados
+        const foto = await Foto.create({ originalname, filename, aluno_id });
+        // e retornamos
+        return res.json(foto);
+      } catch (e) {
+        return res.status(400).json({
+          errors: ['Aluno não encontrado'],
+        });
+      }
     });
   }
 }

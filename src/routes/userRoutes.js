@@ -9,7 +9,7 @@ const router = new Router();
 router.get('/', userController.index);
 // router.get('/:id', userController.show);
 
-router.post('/', userController.store);
+router.post('/', loginRequired, userController.store);
 // ambos seguintes por segurança devemos deixar o acesso restrito
 router.put('/', loginRequired, userController.update);
 router.delete('/:id', loginRequired, userController.delete);

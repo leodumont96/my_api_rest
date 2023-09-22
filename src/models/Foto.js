@@ -35,7 +35,8 @@ export default class Foto extends Model {
     // 2º argumento - chave estrangeira que faz referência
     this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
     // poderíamos fazer o mesmo no aluno, usando o método hasOne ou hasMany
+    // que foi feito :)
   }
 
-  // por fim inicializamos o model e 
+  // por fim inicializamos o model e
 }
