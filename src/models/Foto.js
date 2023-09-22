@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import appConfig from '../config/app';
 
 export default class Foto extends Model {
   static init(sequelize) {
@@ -19,6 +20,18 @@ export default class Foto extends Model {
           notEmpty: {
             msg: 'Campo precisa ser preenchido',
           },
+        },
+      },
+      // vamos criar um campo virtual que quando obter os valores gere uma url
+      url: {
+        type: Sequelize.VIRTUAL,
+        // usamos o método get para obter o valor de um campo e realizar operações
+        // antes de retornar, no caso
+        get() {
+          // usamos o método getDataValue para acessar o valor do campo filename
+          // consiguramos nossa url na pasta config, e alteramos o destino para
+          // as imagens serem upadas na pasta images :)
+          return `${appConfig.url}/images/${this.getDataValue('filename')}`;
         },
       },
     }, {

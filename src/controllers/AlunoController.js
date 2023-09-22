@@ -13,8 +13,8 @@ class AlunoController {
       // incluimos a foto ao aluno para ser exibida
       include: {
         model: Foto,
-        // e dizemos para trazer apenas o campo filename
-        attributes: ['filename'],
+        // e dizemos para trazer o campo filename mas também a url da foto carregada
+        attributes: ['url', 'filename'],
       },
     });
     res.json(alunos);
@@ -43,13 +43,13 @@ class AlunoController {
       }
       // aqui também queremos o mesmo comportamento do index, definir os atributos
       // que seram exibidos, a ordem deles, incluir as fotos respectivas do aluno
-      // e exibir apenas o campo que queremos para identificar
+      // e exibir apenas o campo que queremos para identificar + a url para acessar
       const aluno = await Aluno.findByPk(id, {
         attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
         order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
         include: {
           model: Foto,
-          attributes: ['filename'],
+          attributes: ['url', 'filename'],
         },
       });
 

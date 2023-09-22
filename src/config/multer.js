@@ -25,7 +25,7 @@ export default {
     // vamos definir o destino do arquivo
     destination: (req, file, cb) => {
       // uso '..' para voltar um diretório até chegar na pasta raiz do projeto
-      cb(null, resolve(__dirname, '..', '..', 'uploads'));
+      cb(null, resolve(__dirname, '..', '..', 'uploads', 'images'));
     },
     // vamos determinar o nome do arquivo
     filename: (req, file, cb) => {
